@@ -13,7 +13,7 @@ function Manlayout() {
   return (
     <div className="mainLayout">
       <Sidebar />
-      <div>
+      <div className="content">
         <Navbar />
         <div className="container">
           <Outlet />
