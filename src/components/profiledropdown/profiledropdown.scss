@@ -1,0 +1,87 @@
+.profileDropDown {
+    width: 250px;
+    height: 100%;
+    position: relative;
+    border-left: 1px solid rgba(128, 128, 128, 0.293);
+    
+    .profBtn {
+        cursor: pointer;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding: 0 10px;
+        justify-content: space-between;
+        align-items: center;
+
+        &:hover{
+            background: rgba(140, 0, 255, 0.096);
+        }
+    }
+
+    .title {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    input[type="checkbox"] {
+        display: none;
+    }
+
+    input[type="checkbox"]:checked ~ div .modal {
+        display: flex;
+        animation: slidDown 0.3s ease-in forwards;
+    }
+
+    .modal {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 15px;
+        background: white;
+        border-radius: 0 0 5px 5px;
+        border-top: 1px solid rgba(128, 128, 128, 0.293);
+        -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+        box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+
+        display: none;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+            width: 150px;
+        }
+
+        .title {
+            margin-top: 15px;
+        }
+
+        .oval {
+            border: solid 1px rgba(201, 201, 201, 0.47);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 7px;
+            width: 75%;
+            text-align: center;
+            color: gray;
+            cursor: pointer;
+
+            &:hover {
+                color: white;
+                background: rgba(140, 0, 255, 0.862);
+            }
+        }
+    }
+}
+
+@keyframes slidDown {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
