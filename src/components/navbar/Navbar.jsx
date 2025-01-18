@@ -4,8 +4,12 @@ import CloseIcon from '@mui/icons-material/Close';
 import RemoveIcon from '@mui/icons-material/Remove';
 
 function Navbar() {
+
+
   return (
     <div className="frame">
+      {/* Drag Area */}
+      <div className="dragArea"></div>
       {/* Fram Action */}
       <div className='frameActions'>
         <button className='frameButton'>
