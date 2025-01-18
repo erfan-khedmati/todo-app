@@ -8,6 +8,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    assetModuleFilename: 'images/[hash][ext][query]'
   },
   resolve: {
     extensions: ['.js', '.jsx'],  // Add .jsx here
@@ -22,6 +23,10 @@ module.exports = {
       {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i, // Image file extensions
+        type: 'asset/resource', // Use built-in Webpack 5 loader
       },
     ],
   },
