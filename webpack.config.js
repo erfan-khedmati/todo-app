@@ -34,6 +34,7 @@ module.exports = {
   devServer: {
     static: './dist',
     port: 5000,
+    historyApiFallback: true, // for react router
     hot: true,
   },
 };
