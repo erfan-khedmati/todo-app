@@ -12,6 +12,9 @@ app.on('ready', () => {
     },
   });
 
+  // Hide menu bar
+  mainWindow.setMenuBarVisibility(false)
+
   // mainWindow.loadFile(path.join(__dirname, 'dist', 'index.html'));
     mainWindow.loadURL("http://localhost:5000/")
 });
