@@ -1,15 +1,21 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, screen } = require('electron');
 const path = require('path');
 
 let mainWindow;
 
 app.on('ready', () => {
+
+  // Get the primary display size
+  const {width, height} = screen.getPrimaryDisplay().workAreaSize;
+
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: width,
+    height: height,
     webPreferences: {
       nodeIntegration: true,
     },
+
+    frame: false // hide frame
   });
 
   // Hide menu bar
