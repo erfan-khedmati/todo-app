@@ -14,3 +14,17 @@ export function getDate(date) {
     return finalDate;
 
 }
+
+export function checkPassedDate(date) {
+    const currentDate = new Date()
+
+    date = date.split("T")[0]
+    date = new Date(date)
+
+    console.log(currentDate);
+    console.log(date);
+
+    let is_passed = date < currentDate 
+
+    return is_passed
+}
