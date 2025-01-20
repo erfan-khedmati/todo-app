@@ -79,55 +79,6 @@ function Starlist() {
           </div>
         </div>
       ) : (
-        // <div className="star">
-        //   <h1 className="title-section">STAR TASKS</h1>
-        //   <div className="starList">
-        //     <button className="actionBtn">
-        //       <ArrowLeftIcon className="icon" />
-        //     </button>
-        //     <ul className="list">
-        //       <li className="item active">
-        //         <h1 className="title">{starRef.current[starCounter].title}</h1>
-        //         <p className="desc">
-        //           {starRef.current[starCounter].description}
-        //         </p>
-        //         <div className="links">
-        //           <p className="limit">
-        //             limit date :{" "}
-        //             {getDate(starRef.current[starCounter].limit_time)}
-        //           </p>
-        //           <div className="link">SHOW TASK</div>
-        //           <div className="starCircle">
-        //             <StarIcon className="icon" />
-        //           </div>
-        //         </div>
-        //       </li>
-        //       <li className="item active">
-        //         <h1 className="title">
-        //           {starRef.current[starCounter + 1].title}
-        //         </h1>
-        //         <p className="desc">
-        //           {starRef.current[starCounter + 1].description}
-        //         </p>
-        //         <div className="links">
-        //           <p className="limit late">
-        //             limit date :{" "}
-        //             {getDate(starRef.current[starCounter + 1].limit_time)}
-        //           </p>
-        //           <div className="link">SHOW TASK</div>
-        //           <div className="starCircle">
-        //             <StarIcon className="icon" />
-        //           </div>
-        //         </div>
-        //       </li>
-        //       <li className="item">3</li>
-        //       <li className="item">4</li>
-        //     </ul>
-        //     <button className="actionBtn" onClick={hadleNextSlide}>
-        //       <ArrowRightIcon className="icon" />
-        //     </button>
-        //   </div>
-        // </div>
         <div>Loading</div>
       )}
     </>
