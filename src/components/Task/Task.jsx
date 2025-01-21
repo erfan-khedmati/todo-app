@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState,useRef, useMemo } from "react";
+
+import { useParams } from "react-router-dom";
 
 // import Custom HOOK
 import useFetch from "../../hook/useFetch";
@@ -12,18 +14,32 @@ import "./task.scss";
 import StarIcon from "@mui/icons-material/Star";
 
 function Task() {
+  // Task id
+  const {taskID} = useParams();
+
+  // Fetching API
   const { data, loading, error } = useFetch("./data/data.json");
 
   // form States
-  const [title, setTitle] = useState("Heart participant there military.");
+  const [title, setTitle] = useState("loading...");
   const [desc, setDesc] = useState(
-    "Fund arm staff discuss medical PM. Keep baby water hospital seek reveal available. Be explain energy bad."
+    "loading..."
   );
-  const [date, setDate] = useState("2025-01-13T21:13:29");
+  const [limitDate, setLimitDate] = useState("loading...");
+  const [addedDate, setAddedDate] = useState("Loading...")
 
-  if (!loading) {
-    console.log(data.tasks);
-  }
+  // Find the task and setting
+  const taskData = useMemo(()=>{
+    let task;
+    if (!loading) {
+      task = data.tasks.find((t)=> t.id.toString() === taskID);
+      setTitle(task.title)
+      setDesc(task.description)
+      setLimitDate(task.limit_time)
+      setAddedDate(task.added_date)
+    }
+  }, [loading])
+  
 
   function handleChangetitle(e) {
     setTitle(e.target.value);
@@ -34,7 +50,7 @@ function Task() {
   }
 
   function handleChangeDate(e) {
-    setDate(e.target.value);
+    setLimitDate(e.target.value);
   }
 
   return (
@@ -59,7 +75,6 @@ function Task() {
             <h1>Description</h1>
             <button className="edit">EDIT</button>
           </div>
-          {/* <input type="text" value={desc} onChange={handleChangeDesc}  /> */}
           <textarea
             value={desc}
             className="description"
@@ -70,15 +85,15 @@ function Task() {
         <div className="item date">
           <div className="date-item">
             <p>Added time : </p>
-            <p>{getDate("2025-01-07T21:13:29")}</p>
+            <p>{getDate(addedDate)}</p>
           </div>
           <div className="date-item">
             <p className="dateTitle">Limit date : </p>
             <input
               type="text"
               id="date"
-              className={checkPassedDate(date) ? "input passed" : "input"}
-              value={getDate(date)}
+              className={checkPassedDate(limitDate) ? "input passed" : "input"}
+              value={getDate(limitDate)}
               onChange={handleChangeDate}
             />
             <div className="edit">EDIT</div>

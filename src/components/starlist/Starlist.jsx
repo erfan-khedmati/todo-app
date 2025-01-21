@@ -9,6 +9,7 @@ import "./starlist.scss";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import StarIcon from "@mui/icons-material/Star";
+import { Link } from "react-router-dom";
 
 function Starlist() {
   // Data Fetching
@@ -37,10 +38,10 @@ function Starlist() {
     }
   }
 
-  function handlePrevSlide () {
-    setStarCounter(starCounter-2)
+  function handlePrevSlide() {
+    setStarCounter(starCounter - 2);
     if (starCounter <= 0) {
-      setStarCounter(starData.length-1)
+      setStarCounter(starData.length - 1);
     }
   }
 
@@ -65,7 +66,9 @@ function Starlist() {
                       <p className="limit">
                         limit date : {getDate(task.limit_time)}
                       </p>
-                      <div className="link">SHOW TASK</div>
+                      <Link to={`/task/${task.id}`}>
+                        <div className="link">SHOW TASK</div>
+                      </Link>
                       <div className="starCircle">
                         <StarIcon className="icon" />
                       </div>

@@ -15,10 +15,13 @@ app.on('ready', () => {
       nodeIntegration: true,
       contextIsolation: true,
       preload: path.join(__dirname, 'preload.js'),
+      
     },
 
     frame: false // hide frame
   });
+
+  mainWindow.webContents.openDevTools()
 
   // Hide menu bar
   mainWindow.setMenuBarVisibility(false)
