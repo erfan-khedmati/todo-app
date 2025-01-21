@@ -1,0 +1,149 @@
+.task {
+  .sec-title {
+    font-size: 32px;
+    color: rgba(140, 0, 255, 0.945);
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .content {
+    margin: 40px 50px;
+
+    .item {
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+      box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+
+        &.title {
+          justify-content: start;
+          align-items: center;
+          gap: 20px;
+        }
+
+        h1 {
+          font-size: 16px;
+          font-weight: 500;
+          text-wrap: nowrap;
+        }
+
+        .edit {
+          font-size: 12px;
+          font-weight: 700;
+          color: rgba(140, 0, 255, 0.879);
+          border: 1px solid rgba(128, 128, 128, 0.293);
+          background: white;
+          padding: 3px 12px;
+          border-radius: 10px;
+          margin-left: 10px;
+          cursor: pointer;
+          letter-spacing: 1px;
+          transition: all 0.1s ease-in-out;
+
+          &:hover {
+            background: rgba(140, 0, 255, 0.667);
+            color: white;
+          }
+
+          &.title {
+            margin-left: auto;
+          }
+        }
+      }
+
+      input {
+        width: 100%;
+        margin-top: 20px;
+        border: none;
+        outline: none;
+        &.title {
+          margin-top: 0;
+        }
+      }
+
+      .description {
+        margin-top: 10px;
+        width: 100%;
+        border: none;
+        outline: none;
+        resize: none;
+      }
+
+      &.date {
+        display: flex;
+        // justify-content: space-between;
+        gap: 40px;
+        .date-item {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          font-size: 14px;
+
+          .passed {
+            color: red;
+          }
+
+          .input {
+            width: 100px;
+            margin: 0;
+          }
+
+          .edit {
+            font-size: 12px;
+            font-weight: 700;
+            color: rgba(140, 0, 255, 0.879);
+            border: 1px solid rgba(128, 128, 128, 0.293);
+            background: white;
+            padding: 3px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: all 0.1s ease-in-out;
+
+            &:hover {
+              background: rgba(140, 0, 255, 0.667);
+              color: white;
+            }
+          }
+          .dateTitle {
+            text-wrap: nowrap;
+          }
+
+          &:nth-child(3) {
+            margin-left: auto;
+          }
+          
+          .circle {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: gray;
+            cursor: pointer;
+
+            .icon {
+              font-size: 15px;
+              color: rgb(255, 255, 255);
+            }
+
+
+            &.active {
+              background-color: rgba(140, 0, 255, 0.667);
+              .icon {
+                color: white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
