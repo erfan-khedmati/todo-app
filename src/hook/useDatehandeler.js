@@ -21,9 +21,6 @@ export function checkPassedDate(date) {
     date = date.split("T")[0]
     date = new Date(date)
 
-    console.log(currentDate);
-    console.log(date);
-
     let is_passed = date < currentDate 
 
     return is_passed
