@@ -10,11 +10,13 @@ import { getDate, checkPassedDate } from "../../hook/useDatehandeler";
 // import SCSS file
 import "./task.scss";
 
+// Component
+import Editbutton from "../editbutton/Editbutton";
+
 // icon
 import StarIcon from "@mui/icons-material/Star";
 
 function Task() {
-  // Task id
   const { taskID } = useParams();
 
   // Fetching API
@@ -27,7 +29,6 @@ function Task() {
   const [addedDate, setAddedDate] = useState("Loading...");
 
   // components ref
-  const fromRef = useRef();
   const titleRef = useRef();
   const descRef = useRef();
   const limitTimeRef = useRef();
@@ -44,6 +45,7 @@ function Task() {
     }
   }, [loading]);
 
+  // Handle change form on edit----------------
   function handleChangetitle(e) {
     setTitle(e.target.value);
   }
@@ -56,38 +58,38 @@ function Task() {
     setLimitDate(e.target.value);
   }
 
-  // Handle edit
-  function handleEditBtn(e) {
-    switch (e.target.id) {
+  // Handle edit -----------------------
+  function handleEditBtn(ID) {
+    switch (ID) {
       case "title": {
-        if (!titleRef.current.readOnly) {
-          titleRef.current.readOnly = true;
-          titleRef.current.classList.remove("activeEdit");
-        } else {
-          titleRef.current.classList.add("activeEdit");
+        if (titleRef.current.readOnly) {
           titleRef.current.readOnly = false;
+          titleRef.current.classList.add("editting");
+        } else {
+          titleRef.current.readOnly = true;
+          titleRef.current.classList.remove("editting");
         }
         break;
       }
       case "description": {
-        if (!descRef.current.readOnly) {
-          descRef.current.readOnly = true;
-          descRef.current.classList.remove("activeEdit")
-        } else {
+        if (descRef.current.readOnly) {
           descRef.current.readOnly = false;
-          descRef.current.classList.add("activeEdit")
+          descRef.current.classList.add("editting");
+        } else {
+          descRef.current.readOnly = true;
+          descRef.current.classList.remove("editting");
         }
         break;
       }
-      case "date": {
-        if (!limitTimeRef.current.readOnly) {
-          limitTimeRef.current.readOnly = true;
-          limitTimeRef.current.classList.remove("activeEdit")
-        } else {
-          limitTimeRef.current.classList.add("activeEdit")
+      case "limit_time": {
+        if (limitTimeRef.current.readOnly) {
           limitTimeRef.current.readOnly = false;
+          limitTimeRef.current.classList.add("editting");
+        } else {
+          limitTimeRef.current.readOnly = true;
+          limitTimeRef.current.classList.remove("editting");
         }
-        break
+        break;
       }
     }
   }
@@ -97,67 +99,58 @@ function Task() {
     e.preventDefault();
   }
 
+  // handle Resize TextArea
+  function handleResizeTextArea() {
+    descRef.current.style.height = `${descRef.current.scrollHeight}px`;
+  }
+
   return (
-    <div className="task">
-      <h1 className="sec-title">TASK PAGE</h1>
-      <form className="content" onSubmit={handleSubForm}>
-        <div className="item">
-          <div className="top title">
-            <h1>title : </h1>
+    <div className="taskPage">
+      <h1 className="title">TASK PAGE</h1>
+      <form onSubmit={handleSubForm}>
+        <ul className="items">
+          <li className="item title-section">
+            <h1 className="header">title : </h1>
             <input
               type="text"
               value={title}
-              className="title"
               onChange={handleChangetitle}
               readOnly
               ref={titleRef}
             />
-            <div className="edit title" id="title" onClick={handleEditBtn}>
-              EDIT
+            <div id="title" onClick={() => handleEditBtn("title")}>
+              <Editbutton />
             </div>
-          </div>
-        </div>
-        <div className="item">
-          <div className="top">
-            <h1>Description</h1>
-            <button className="edit" id="description" onClick={handleEditBtn}>
-              EDIT
-            </button>
-          </div>
-          <textarea
-            value={desc}
-            className="description"
-            ref={descRef}
-            readOnly
-            onChange={handleChangeDesc}
-          ></textarea>
-        </div>
-        <div className="item date">
-          <div className="date-item">
-            <p>Added time : </p>
-            <p>{getDate(addedDate)}</p>
-          </div>
-          <div className="date-item">
-            <p className="dateTitle">Limit date : </p>
-            <input
-              type="text"
-              id="date"
-              ref={limitTimeRef}
-              className={checkPassedDate(limitDate) ? "input passed" : "input"}
+          </li>
+          <li className="item desc">
+            <div className="top">
+              <h1 className="header">Description : </h1>
+              <div onClick={() => handleEditBtn("description")}>
+                <Editbutton />
+              </div>
+            </div>
+            <textarea
               readOnly
-              value={getDate(limitDate)}
-              onChange={handleChangeDate}
-            />
-            <div className="edit" id="date" onClick={handleEditBtn}>
-              EDIT
+              value={desc}
+              onChange={handleChangeDesc}
+              ref={descRef}
+              onInput={handleResizeTextArea}
+            ></textarea>
+          </li>
+          <li className="item">
+            <div className="bottom-item">Added : {getDate(addedDate)}</div>
+            <div className="bottom-item">
+              <p>Limit Date:</p> <input type="textd" ref={limitTimeRef} value={getDate(limitDate)} readOnly onChange={handleChangeDate} />
+              <div onClick={()=> handleEditBtn("limit_time")}>
+                <Editbutton />
+              </div>
             </div>
-          </div>
-          <div className="date-item">
-            <div className="circle">
-              <StarIcon className="icon" />
+            <div className="bottom-item"><StarIcon className="icon" /></div>
+            <div className="bottom-item">
+              SUBMIT
             </div>
-          </div>
-        </div>
+          </li>
+        </ul>
       </form>
     </div>
   );
