@@ -57,11 +57,23 @@
         }
       }
 
+      .activeEdit {
+        background-color: rgba(140, 0, 255, 0.76);
+        color: white;
+        -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+        box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+        font-size: 15px;
+        border-radius: 5px;
+      }
+
       input {
         width: 100%;
         margin-top: 20px;
+        padding: 3px 5px;
+        border-radius: 5px;
         border: none;
         outline: none;
+        transition: all 0.2s ease-in-out;
         &.title {
           margin-top: 0;
         }
@@ -69,10 +81,12 @@
 
       .description {
         margin-top: 10px;
+        padding: 3px 5px;
         width: 100%;
         border: none;
         outline: none;
         resize: none;
+        transition: all 0.2s ease-in-out;
       }
 
       &.date {
@@ -118,7 +132,7 @@
           &:nth-child(3) {
             margin-left: auto;
           }
-          
+
           .circle {
             width: 24px;
             height: 24px;
@@ -133,7 +147,6 @@
               font-size: 15px;
               color: rgb(255, 255, 255);
             }
-
 
             &.active {
               background-color: rgba(140, 0, 255, 0.667);
