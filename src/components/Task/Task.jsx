@@ -7,6 +7,8 @@ import useFetch from "../../hook/useFetch";
 
 import { getDate, checkPassedDate } from "../../hook/useDatehandeler";
 
+import { updateTask } from "../../script/updateData";
+
 // import SCSS file
 import "./task.scss";
 
@@ -27,6 +29,8 @@ function Task() {
   const [desc, setDesc] = useState("loading...");
   const [limitDate, setLimitDate] = useState("loading...");
   const [addedDate, setAddedDate] = useState("Loading...");
+  const [isStared, setIsStared] = useState(false)
+  const [id, setId] = useState("loading ...")
 
   // components ref
   const titleRef = useRef();
@@ -42,6 +46,8 @@ function Task() {
       setDesc(task.description);
       setLimitDate(task.limit_time);
       setAddedDate(task.added_date);
+      setIsStared(task.star)
+      setId(task.id)
     }
   }, [loading]);
 
@@ -97,6 +103,8 @@ function Task() {
   // Handle Submit form
   function handleSubForm(e) {
     e.preventDefault();
+    // Update the changes
+    updateTask(id, title, desc, limitDate, isStared)
   }
 
   // handle Resize TextArea
@@ -146,9 +154,9 @@ function Task() {
               </div>
             </div>
             <div className="bottom-item"><StarIcon className="icon" /></div>
-            <div className="bottom-item">
+            <button className="bottom-item" type="submit">
               SUBMIT
-            </div>
+            </button>
           </li>
         </ul>
       </form>

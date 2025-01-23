@@ -11,7 +11,7 @@ function Editbutton() {
         
     // }
   return (
-    <button className='edit'>
+    <button className='edit' type='button'>
         <EditIcon className='icon' />
     </button>
   )
