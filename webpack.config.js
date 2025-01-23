@@ -2,9 +2,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 module.exports = {
   mode: "development",
+  target: 'electron-main',
   entry: './src/index.jsx',
   output: {
     filename: 'bundle.js',
@@ -13,6 +15,13 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],  // Add .jsx here
+    alias: {
+      path: require.resolve('path-browserify'),
+    },
+    fallback: {
+      fs: false, // Ensure 'fs' is used only in the preload/main process
+      path: require.resolve('path-browserify'),
+    },
   },
   module: {
     rules: [
@@ -31,7 +40,13 @@ module.exports = {
       },
     ],
   },
+  externals: {
+    electron: 'commonjs electron',
+    fs: 'commonjs fs',
+    path: 'commonjs path',
+  },
   plugins: [
+    new NodePolyfillPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './public/index.html',
@@ -49,6 +64,6 @@ module.exports = {
     static: './dist',
     port: 5000,
     historyApiFallback: true, // for react router
-    hot: true,
+    hot: false,
   },
 };

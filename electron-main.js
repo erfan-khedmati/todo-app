@@ -15,7 +15,7 @@ app.on('ready', () => {
       nodeIntegration: true,
       contextIsolation: true,
       preload: path.join(__dirname, 'preload.js'),
-      
+      enableRemoteModule: false,
     },
 
     frame: false // hide frame
