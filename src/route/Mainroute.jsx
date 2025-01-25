@@ -6,7 +6,7 @@ import { BrowserRouter, HashRouter, Routes, Route } from "react-router-dom";
 import Mainlayout from "../layout/Manlayout"
 import Home from "../pages/home/Home";
 import Profile from "../pages/profile/Profile";
-import Task from "../components/Task/Task";
+import Singletask from "../pages/singletask/Singletask";
 
 function Mainroute() {
   return (
@@ -14,8 +14,7 @@ function Mainroute() {
       <Routes>
         <Route path="/" element={<Mainlayout />}>
           <Route index element={<Home />} />
-          <Route path="task/:taskID" element={<Task />}>
-            
+          <Route path="task/:taskID" element={<Singletask />}>
           </Route>
           <Route path="profile" element={<Profile />} />
         </Route>
