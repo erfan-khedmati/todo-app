@@ -1,4 +1,5 @@
 export function getDate(date) {
+    date = String(date)
     date = date.split("T")
     date = date[0].split("-")
 
@@ -18,6 +19,7 @@ export function getDate(date) {
 export function checkPassedDate(date) {
     const currentDate = new Date()
 
+    date = String(date)
     date = date.split("T")[0]
     date = new Date(date)
 
