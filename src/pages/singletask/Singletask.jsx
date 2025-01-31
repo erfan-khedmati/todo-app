@@ -21,6 +21,9 @@ function Singletask() {
   const { data, loading, error } = useFetch("./data/data.json");
   const { taskID } = useParams();
 
+  // Star state
+  const [isStared, setIsStared] = useState(true);
+
   // Get the task Model
   useEffect(() => {
     if (!loading) {
@@ -29,11 +32,17 @@ function Singletask() {
     }
   }, [taskID, data, loading]);
 
+  // Change star value
+  useEffect(() => {
+    if (taskModel) {
+      setIsStared(taskModel.star);
+    }
+  }, [taskModel]);
+
   // components ref
   const titleRef = useRef();
   const descRef = useRef();
   const limitTimeRef = useRef();
-
   // Handle edit -----------------------
   function handleEditBtn(ID) {
     switch (ID) {
@@ -75,16 +84,19 @@ function Singletask() {
     descRef.current.style.height = `${descRef.current.scrollHeight}px`;
   }
 
-  function handleSubmitForm (e) {
-    e.preventDefault()
-    taskModel.updateData(titleRef.current.value, descRef.current.value, limitTimeRef.current.value)
-    // console.log(titleRef.current.value);
+  function handleSubmitForm(e) {
+    e.preventDefault();
+    taskModel.updateData(
+      titleRef.current.value,
+      descRef.current.value,
+      limitTimeRef.current.value,
+      isStared
+    );
   }
 
   if (!taskModel) {
     return <div>loading</div>;
   }
-
 
   if (taskModel !== null) {
     return (
@@ -134,9 +146,18 @@ function Singletask() {
                   <Editbutton />
                 </div>
               </div>
-              <div className="bottom-item">
+              <input
+                type="checkbox"
+                id="star"
+                checked={isStared}
+                onChange={() => {
+                  setIsStared(!isStared);
+                }}
+                className="starCheck"
+              />
+              <label htmlFor="star" className="bottom-item starLabel">
                 <StarIcon className="icon" />
-              </div>
+              </label>
               <button className="bottom-item" type="submit">
                 SUBMIT
               </button>

@@ -26,7 +26,7 @@ export default class SingleTaskModel {
         const isDeScriptionChanged = this.description !== description ? description : null
         const isLimitDateChanged = this.limit_time !== limit_time ? limit_time : null
         const isStarChanged = this.star !== star ? star : null
-        // Star is remaining will fixed
+        
         window.electronAPI.writeTask("./src/data/data.json", this.id,isTitleChanged, isDeScriptionChanged, isLimitDateChanged, isStarChanged)
     }
 }

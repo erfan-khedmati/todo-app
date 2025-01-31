@@ -21,7 +21,7 @@
         margin-bottom: 20px;
         -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
         box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
-  
+
         .header {
           font-size: 1rem;
           font-weight: 600;
@@ -93,7 +93,7 @@
               }
             }
   
-            &:nth-child(3) {
+            &:nth-child(4) {
               width: 40px;
               height: 40px;
               border-radius: 20px;
@@ -134,6 +134,17 @@
               }
             }
   
+          }
+        }
+
+        .starCheck {
+          display: none;
+        }
+
+        .starCheck:checked + .starLabel {
+          background-color: rgba(140, 0, 255, 0.667);
+          .icon {
+            color: yellow;
           }
         }
       }
