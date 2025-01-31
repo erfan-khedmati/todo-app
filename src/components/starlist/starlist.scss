@@ -57,6 +57,7 @@
           display: -webkit-box;
           -webkit-line-clamp: 1;
           -webkit-box-orient: vertical;
+          overflow: hidden;
         }
 
         .desc {
@@ -72,6 +73,12 @@
           display: flex;
           gap: 20px;
           margin-top: auto;
+          
+          a {
+            text-decoration: none;
+            color: #444;
+          }
+
           .limit {
             font-size: 12px;
             border-bottom: 1px solid rgba(201, 201, 201, 0.47);
@@ -87,14 +94,12 @@
             padding: 3px 15px;
             border-radius: 10px;
             font-size: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             border: 1px solid rgba(201, 201, 201, 0.47);
             cursor: pointer;
 
             &:hover {
-              background-color: rgba(140, 0, 255, 0.122);
+              background-color: rgba(140, 0, 255, 0.603);
+              color: white;
             }
           }
           .starCircle {
