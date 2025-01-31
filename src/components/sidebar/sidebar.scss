@@ -26,31 +26,43 @@
       color: rgb(117, 117, 117);
     }
 
-    .item {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 7px;
-        margin-left: 10px;
-        
-        cursor: pointer;
-        &:hover{
-            background: rgba(140, 0, 255, 0.566);
-            p,.icon{
-                color: white;
-            }
-        }
-
-        p {
-            font-size: 13px;
-            font-weight: 600;
-            color: rgb(117, 117, 117);
-        }
-        .icon {
-            font-size: 18px;
-            color: rgb(140, 0, 255);
-        }
+    & a {
+      text-decoration: none;
     }
 
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px;
+      margin-left: 10px;
+
+      cursor: pointer;
+      &:hover {
+        background: rgba(140, 0, 255, 0.566);
+        p,
+        .icon {
+          color: white;
+        }
+      }
+
+      &.active {
+        background: rgba(140, 0, 255, 0.566);
+        p,
+        .icon {
+          color: white;
+        }
+      }
+
+      p {
+        font-size: 13px;
+        font-weight: 600;
+        color: rgb(117, 117, 117);
+      }
+      .icon {
+        font-size: 18px;
+        color: rgb(140, 0, 255);
+      }
+    }
   }
 }
