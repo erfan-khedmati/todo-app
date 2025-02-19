@@ -1,16 +1,10 @@
 export function getDate(date) {
+    // Make Date To String
     date = String(date)
-    date = date.split("T")
-    date = date[0].split("-")
-
-    let finalDate = ""
-    for (let i = 0; i < date.length; i++) {
-        if (i == date.length - 1) {
-            finalDate += `${date[i]}`
-        } else {
-            finalDate += `${date[i]}/`
-        }
-    }
+    // Make Date to Date OBJ
+    const objectDate = new Date(date);
+    // convert to yymmdd
+    let finalDate = `${objectDate.getFullYear()}/${objectDate.getMonth()+1}/${objectDate.getDay()+1}`;
 
     return finalDate;
 
