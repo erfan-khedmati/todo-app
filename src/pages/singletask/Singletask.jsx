@@ -27,7 +27,7 @@ function Singletask() {
   // Get the task Model
   useEffect(() => {
     if (!loading) {
-      const task = SingleTaskModel.createFormData(data.tasks, taskID);
+      const task = SingleTaskModel.createFormData(data.profiles[0].tasks, taskID);
       setTaskModel(task);
     }
   }, [taskID, data, loading]);

@@ -21,7 +21,7 @@ function Starlist() {
   // Get star data
   const starData = useMemo(() => {
     if (!loading) {
-      return data.tasks.filter((task) => task.star);
+      return data.profiles[0].tasks.filter((task) => task.star);
     }
     return [];
   }, [loading]);
