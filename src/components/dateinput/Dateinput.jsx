@@ -33,8 +33,10 @@ function Dateinput({ ref, defaultValue }) {
     // Got error if less than 8 characters
     if (input.length < 8) {
       errRef.current.style.display = "block";
+      e.target.classList.add("error")
     } else {
       errRef.current.style.display = "none";
+      e.target.classList.remove("error")
     }
   }
 
