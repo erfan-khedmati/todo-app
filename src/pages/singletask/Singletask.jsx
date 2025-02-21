@@ -28,7 +28,10 @@ function Singletask() {
   // Get the task Model
   useEffect(() => {
     if (!loading) {
-      const task = SingleTaskModel.createFormData(data.profiles[0].tasks, taskID);
+      const task = SingleTaskModel.createFormData(
+        data.profiles[0].tasks,
+        taskID
+      );
       setTaskModel(task);
     }
   }, [taskID, data, loading]);
@@ -143,7 +146,10 @@ function Singletask() {
                   defaultValue={getDate(taskModel.limit_time)}
                   readOnly
                 /> */}
-                <Dateinput ref={limitTimeRef} defaultValue={getDate(taskModel.limit_time)} />
+                <Dateinput
+                  ref={limitTimeRef}
+                  defaultValue={getDate(taskModel.limit_time)}
+                />
                 <div onClick={() => handleEditBtn("limit_time")}>
                   <Editbutton />
                 </div>
@@ -160,9 +166,14 @@ function Singletask() {
               <label htmlFor="star" className="bottom-item starLabel">
                 <StarIcon className="icon" />
               </label>
-              <button className="bottom-item" type="submit">
-                SUBMIT
-              </button>
+              <div className="bottom-item">
+                <button className="buttonAction" type="submit">
+                  CANCLE
+                </button>
+                <button className="buttonAction" type="submit">
+                  SUBMIT
+                </button>
+              </div>
             </li>
           </ul>
         </form>
