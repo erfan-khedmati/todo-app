@@ -11,6 +11,7 @@ import "./singletask.scss";
 
 // Components
 import Editbutton from "../../components/editbutton/Editbutton";
+import Dateinput from "../../components/dateinput/Dateinput";
 
 // icon
 import StarIcon from "@mui/icons-material/Star";
@@ -136,12 +137,13 @@ function Singletask() {
               </div>
               <div className="bottom-item">
                 <p>Limit Date:</p>
-                <input
+                {/* <input
                   type="textd"
                   ref={limitTimeRef}
                   defaultValue={getDate(taskModel.limit_time)}
                   readOnly
-                />
+                /> */}
+                <Dateinput ref={limitTimeRef} defaultValue={getDate(taskModel.limit_time)} />
                 <div onClick={() => handleEditBtn("limit_time")}>
                   <Editbutton />
                 </div>

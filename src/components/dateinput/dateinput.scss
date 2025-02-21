@@ -1,0 +1,27 @@
+.dateInputBody {
+    position: relative;
+  .err {
+    font-size: 12px;
+    display: none;
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    padding: 4px 8px;
+    position: absolute;
+    bottom: -57px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .triangle {
+        position: absolute;
+        top: -5px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 0;
+        height: 0;
+        border-bottom: 14px solid red;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+    }
+  }
+}
