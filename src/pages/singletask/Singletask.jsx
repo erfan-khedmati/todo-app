@@ -89,13 +89,22 @@ function Singletask() {
   }
 
   function handleSubmitForm(e) {
+    // Stay at form
     e.preventDefault();
-    taskModel.updateData(
-      titleRef.current.value,
-      descRef.current.value,
-      limitTimeRef.current.value,
-      isStared
-    );
+    
+    // Control input
+    if (
+      titleRef.current.value !== "" &&
+      descRef.current.value !== "" &&
+      !limitTimeRef.current.classList.contains("error")
+    ) {
+      taskModel.updateData(
+        titleRef.current.value,
+        descRef.current.value,
+        limitTimeRef.current.value,
+        isStared
+      );
+    }
   }
 
   if (!taskModel) {
@@ -140,12 +149,6 @@ function Singletask() {
               </div>
               <div className="bottom-item">
                 <p>Limit Date:</p>
-                {/* <input
-                  type="textd"
-                  ref={limitTimeRef}
-                  defaultValue={getDate(taskModel.limit_time)}
-                  readOnly
-                /> */}
                 <Dateinput
                   ref={limitTimeRef}
                   defaultValue={getDate(taskModel.limit_time)}
@@ -167,9 +170,7 @@ function Singletask() {
                 <StarIcon className="icon" />
               </label>
               <div className="bottom-item">
-                <button className="buttonAction" type="submit">
-                  CANCLE
-                </button>
+                <button className="buttonAction">CANCLE</button>
                 <button className="buttonAction" type="submit">
                   SUBMIT
                 </button>
