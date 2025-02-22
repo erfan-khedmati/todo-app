@@ -107,6 +107,11 @@ function Singletask() {
     }
   }
 
+  // Handle CANCLE button
+  function handleCancleButton() {
+    window.location.reload();
+  }
+
   if (!taskModel) {
     return <div>loading</div>;
   }
@@ -170,8 +175,18 @@ function Singletask() {
                 <StarIcon className="icon" />
               </label>
               <div className="bottom-item">
-                <button className="buttonAction">CANCLE</button>
-                <button className="buttonAction" type="submit">
+                <button
+                  className="buttonAction"
+                  type="button"
+                  onClick={handleCancleButton}
+                >
+                  CANCLE
+                </button>
+                <button
+                  className="buttonAction"
+                  type="submit"
+                  onClick={handleSubmitForm}
+                >
                   SUBMIT
                 </button>
               </div>
