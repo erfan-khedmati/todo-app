@@ -17,10 +17,10 @@ contextBridge.exposeInMainWorld("electronAPI", {
         const jsonData = JSON.parse(data)
 
         // Find the task
-        const task = jsonData.tasks.find(t => t.id === id)
+        const task = jsonData.profiles[0].tasks.find(t => t.id === id)
 
         // remove the task from the list
-        jsonData.tasks = jsonData.tasks.filter(t => t.id !== id);
+        jsonData.tasks = jsonData.profiles[0].tasks.filter(t => t.id !== id);
 
         // Check to changes
         if (title !== null) {
