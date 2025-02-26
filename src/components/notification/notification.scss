@@ -1,0 +1,51 @@
+.notification {
+    color: white;
+    border-radius: 10px;
+    font-size: 14px;
+
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    padding: 8px 20px;
+
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    animation: notif 5s forwards ease;
+
+    .icon {
+        font-size: 20px;
+    }
+
+    // background
+    &.success {
+        background: #10cf5d;
+    }
+
+    &.failed {
+        background: rgb(209, 27, 27);
+    }
+
+}
+
+
+@keyframes notif {
+    0% {
+        bottom: -2rem;
+        opacity: 0.5;
+    }
+    15% {
+        bottom: 1rem;
+        opacity: 1;
+    }
+    85% {
+        right: 1rem;
+        opacity: 1;
+    }
+
+    100% {
+        right: -10%;
+        opacity: 0;
+    }
+}
