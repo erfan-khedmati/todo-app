@@ -6,6 +6,8 @@ import SingleTaskModel from "../../models/SingleTaskModel";
 import useFetch from "../../hook/useFetch";
 import { getDate, checkPassedDate } from "../../hook/useDatehandeler";
 
+import { useNotification } from "../../hook/notificationContext";
+
 // Import SCSS file
 import "./singletask.scss";
 
@@ -21,6 +23,9 @@ function Singletask() {
   const [taskModel, setTaskModel] = useState(null);
   const { data, loading, error } = useFetch("./data/data.json");
   const { taskID } = useParams();
+
+  // Notification function
+  const { addNotif } = useNotification();
 
   // Star state
   const [isStared, setIsStared] = useState(true);
@@ -91,7 +96,7 @@ function Singletask() {
   function handleSubmitForm(e) {
     // Stay at form
     e.preventDefault();
-    
+
     // Control input
     if (
       titleRef.current.value !== "" &&
@@ -104,6 +109,9 @@ function Singletask() {
         limitTimeRef.current.value,
         isStared
       );
+      addNotif("Task added successfully", "success");
+    } else {
+      addNotif("Failed, enter the valid inputs!", "failed")
     }
   }
 
