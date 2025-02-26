@@ -3,23 +3,30 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 
 // SCSS file import
-import "./mainlayout.scss"
+import "./mainlayout.scss";
 
 // Components
 import Sidebar from "../components/sidebar/Sidebar";
 import Navbar from "../components/navbar/Navbar";
 
+// Notification
+import {
+  NotificationProvider,
+} from "../hook/notificationContext";
+
 function Manlayout() {
   return (
-    <div className="mainLayout">
-      <Sidebar />
-      <div className="content">
-        <Navbar />
-        <div className="container">
-          <Outlet />
+    <NotificationProvider>
+      <div className="mainLayout">
+        <Sidebar />
+        <div className="content">
+          <Navbar />
+          <div className="container">
+            <Outlet />
+          </div>
         </div>
       </div>
-    </div>
+    </NotificationProvider>
   );
 }
 
