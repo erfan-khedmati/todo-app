@@ -3,8 +3,9 @@ export function getDate(date) {
     date = String(date)
     // Make Date to Date OBJ
     const objectDate = new Date(date);
+    console.log(objectDate.getDate());
     // convert to yymmdd
-    let finalDate = `${objectDate.getFullYear()}/${objectDate.getMonth() + 1 < 10 ? `0${objectDate.getMonth() + 1}` : objectDate.getMonth() + 1}/${objectDate.getDay() + 1 < 10 ? `0${objectDate.getDay() + 1}` : objectDate.getDay() + 1}`;
+    let finalDate = `${objectDate.getFullYear()}/${objectDate.getMonth() + 1 < 10 ? `0${objectDate.getMonth() + 1}` : objectDate.getMonth() + 1}/${objectDate.getDate() + 1 < 10 ? `0${objectDate.getDate()}` : objectDate.getDate()}`;
     return finalDate;
 
 }
