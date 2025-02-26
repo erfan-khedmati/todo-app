@@ -99,6 +99,13 @@ function Singletask() {
 
     // Control input
     if (
+      titleRef.current.value == taskModel.title &&
+      descRef.current.value == taskModel.description &&
+      limitTimeRef.current.value == taskModel.limit_time &&
+      isStared == taskModel.star
+    ) {
+      addNotif("Nothing changed!", "warning");
+    } else if (
       titleRef.current.value !== "" &&
       descRef.current.value !== "" &&
       !limitTimeRef.current.classList.contains("error")
@@ -109,9 +116,9 @@ function Singletask() {
         limitTimeRef.current.value,
         isStared
       );
-      addNotif("Task added successfully", "success");
+      addNotif("Task updated successfully", "success");
     } else {
-      addNotif("Failed, enter the valid inputs!", "failed")
+      addNotif("Failed, enter the valid inputs!", "failed");
     }
   }
 
