@@ -1,7 +1,18 @@
+:root {
+  /* Light Theme */
+  --background-light: #fff; 
+}
+
+html[data-theme="dark"] {
+  /* Dark Theme */
+  --background-dark: #212121;
+}
+
 .frame {
   display: flex;
   height: 40px;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.293);
+  border-bottom: 1px solid var(--border-light);
+  background: var(--background-light);
 
   .frameActions {
     display: flex;
@@ -14,10 +25,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: transparent;
       border: none;
       cursor: pointer;
-      background: gray;
       width: 18px;
       height: 18px;
       border-radius: 50%;
@@ -36,4 +45,9 @@
     height: 100%;
     -webkit-app-region: drag;
   }
+}
+
+
+html[data-theme="dark"] .frame {
+  background: var(--background-dark);
 }
