@@ -1,13 +1,33 @@
-.sidebar {
-  // For dark mode postion
-  position: relative;
+:root {
+  /* Light Theme */
+  --background-light: #fff; 
+  --border-light: rgba(128, 128, 128, 0.293); 
+  --brand-primary: rgb(140, 0, 255);
+  --text-primary-light: rgb(117, 117, 117);
+  --secondary-light: rgba(140, 0, 255, 0.566);
+  --active-text-light: white;
+  --link-text-light: var(--text-primary-light);
+}
 
-  flex: 1; // flex with the main layout .scss
-  border-right: 1px solid rgba(128, 128, 128, 0.293);
+html[data-theme="dark"] {
+  /* Dark Theme */
+  --background-dark: #212121;
+  --border-dark: rgba(255, 255, 255, 0.1);
+  --text-primary-dark: rgba(255, 255, 255, 0.87);
+  --secondary-dark: rgba(140, 0, 255, 0.8);
+  --link-text-dark: white;
+}
+
+.sidebar {
+  position: relative;
+  background: var(--background-light);
+  flex: 1;
+  border-right: 1px solid var(--border-light);
+
   .brand {
     width: 100%;
     height: 40px;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.293);
+    border-bottom: 1px solid var(--border-light);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,7 +35,7 @@
     h1 {
       font-size: 20px;
       font-weight: bold;
-      color: rgb(140, 0, 255);
+      color: var(--brand-primary);
     }
   }
 
@@ -26,7 +46,7 @@
       margin-bottom: 5px;
       font-size: 12px;
       font-weight: 600;
-      color: rgb(117, 117, 117);
+      color: var(--text-primary-light);
     }
 
     & a {
@@ -39,32 +59,72 @@
       gap: 8px;
       padding: 7px;
       margin-left: 10px;
-
       cursor: pointer;
+
       &:hover {
-        background: rgba(140, 0, 255, 0.566);
+        background: var(--secondary-light);
+
         p,
         .icon {
-          color: white;
+          color: var(--link-text-light);
         }
       }
 
       &.active {
-        background: rgba(140, 0, 255, 0.566);
+        background: var(--secondary-light);
         p,
         .icon {
-          color: white;
+          color: var(--active-text-light);
         }
       }
 
       p {
         font-size: 13px;
         font-weight: 600;
-        color: rgb(117, 117, 117);
+        color: var(--text-primary-light);
       }
+
       .icon {
         font-size: 18px;
-        color: rgb(140, 0, 255);
+        color: var(--brand-primary);
+      }
+    }
+  }
+}
+
+html[data-theme="dark"] .sidebar {
+  background: var(--background-dark);
+  border-right: 1px solid var(--border-dark);
+
+  .brand {
+    border-bottom: 1px solid var(--border-dark);
+  }
+
+  .items {
+    .menuTitle {
+      color: var(--text-primary-dark);
+    }
+
+    .item {
+      &:hover {
+        background: var(--secondary-dark);
+
+        p,
+        .icon {
+          color: var(--link-text-dark);
+        }
+      }
+
+      &.active {
+        background: var(--secondary-dark);
+        p,
+        .icon {
+          color: var(--active-text-light);
+        }
+      }
+
+      p {
+        color: var(--text-primary-dark);
       }
     }
   }
