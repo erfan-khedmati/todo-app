@@ -1,0 +1,35 @@
+:root {
+  --btn_bg: #414040;
+  --color: #fff;
+}
+
+html[data-theme="dark"] {
+  --btn_bg: #fff;
+  --color: #414040;
+}
+
+.darkMode {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    border: none;
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    background-color: var(--btn_bg);
+
+    .icon {
+      color: var(--color);
+    }
+  }
+}

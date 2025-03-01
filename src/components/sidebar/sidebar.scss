@@ -1,4 +1,7 @@
 .sidebar {
+  // For dark mode postion
+  position: relative;
+
   flex: 1; // flex with the main layout .scss
   border-right: 1px solid rgba(128, 128, 128, 0.293);
   .brand {

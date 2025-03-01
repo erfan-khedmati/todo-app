@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 
 // SCSS file
 import "./sidebar.scss";
+import DarkMode from "../darkmode/DarkMode"
 
 // ICONS
 import HomeIcon from "@mui/icons-material/Home";
@@ -68,6 +69,9 @@ function Sidebar() {
         <li className="item">
           <LogoutOutlinedIcon className="icon" />
           <p>Logout</p>
+        </li>
+        <li>
+          <DarkMode />
         </li>
       </ul>
     </div>
